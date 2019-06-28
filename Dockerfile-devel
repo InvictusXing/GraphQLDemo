@@ -1,0 +1,17 @@
+#from latest node.js
+FROM node:latest
+
+#change image working directory to this
+#all commands after this run in this working directory
+WORKDIR /usr/src/app
+
+#copy package.json and package-lock.json in the current directory to the image working directory
+COPY package*.json ./
+
+#run npm install
+RUN npm install
+
+#copy all files in current directory to image working directory
+COPY . .
+
+CMD ["npm", "start"]
